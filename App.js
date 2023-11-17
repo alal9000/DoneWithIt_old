@@ -1,8 +1,15 @@
 import { View } from "react-native";
-import AppButton from "./app/components/AppButton";
-import WelcomeScreen from "./app/screens/WelcomeScreen";
+import CardComponent from "./app/components/CardComponent";
 
 export default function App() {
-  return <WelcomeScreen />
-  
+  return (
+    <View style={{ backgroundColor: 'f8f4f4'}}>
+
+      <CardComponent
+        title="red jacet for sale"
+        subTitle="$100"
+        image={require("./app/assets/jacket.jpg")}
+      />
+    </View>
+  );
 }
