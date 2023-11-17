@@ -1,12 +1,17 @@
 import { View } from "react-native";
-import CardComponent from "./app/components/CardComponent";
+import Card from "./app/components/Card";
 
 export default function App() {
   return (
-    <View style={{ backgroundColor: 'f8f4f4'}}>
-
-      <CardComponent
-        title="red jacet for sale"
+    <View
+      style={{
+        backgroundColor: "#f8f4f4",
+        padding: 20,
+        paddingTop: 100
+      }}
+    >
+      <Card
+        title="Red jacket for sale"
         subTitle="$100"
         image={require("./app/assets/jacket.jpg")}
       />
