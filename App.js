@@ -12,11 +12,17 @@ const categories = [
 ];
 
 export default function App() {
-  const [isNew, setIsNew] = useState(false);
+  const [category, setCategory] = useState(categories[0]);
 
   return (
     <Screen>
-      <AppPicker icon="apps" placeholder="Category" items={categories} />
+      <AppPicker
+        selectedItem={category}
+        onSelectItem={(item) => setCategory(item)}
+        icon="apps"
+        placeholder="Category"
+        items={categories}
+      />
       <AppTextInput icon="email" placeholder="Email" />
     </Screen>
   );
