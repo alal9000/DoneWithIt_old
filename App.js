@@ -1,9 +1,10 @@
-import MessagesScreen from "./app/screens/MessagesScreen";
-import MyAccountScreen from "./app/screens/MyAccountScreen";
-import ViewImageScreen from "./app/screens/ViewImageScreen";
+import Screen from "./app/components/Screen";
+import Icon from "./app/components/Icon";
 
 export default function App() {
   return (
-    <MyAccountScreen />
+    <Screen>
+      <Icon name="email" size={100} />
+    </Screen>
   );
 }
