@@ -1,16 +1,11 @@
-import {
-  Image,
-  StyleSheet,
-  TouchableHighlight,
-  View
-} from "react-native";
+import { Image, StyleSheet, TouchableHighlight, View } from "react-native";
 import {
   GestureHandlerRootView,
   Swipeable
 } from "react-native-gesture-handler";
-import AppText from "./AppText";
+import AppText from "../AppText";
 
-import colors from "../config/colors";
+import colors from "../../config/colors";
 
 function ListItem({
   title,
