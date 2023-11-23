@@ -7,6 +7,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { Button } from "react-native";
 import Screen from "./app/components/Screen";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 
 const Link = () => {
   const navigation = useNavigation();
@@ -59,7 +60,7 @@ const FeedNavigator = () => (
   </Stack.Navigator>
 );
 
-const Account = () => (
+const AccountNavigator = () => (
   <Screen>
     <Text>Account</Text>
   </Screen>
@@ -76,7 +77,7 @@ const TabNavigator = () => (
 export default function App() {
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
