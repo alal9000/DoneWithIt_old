@@ -7,7 +7,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { Button } from "react-native";
 import Screen from "./app/components/Screen";
-import AuthNavigator from "./app/navigation/AuthNavigator";
+import AuthNavigator from "./app/navigation/authNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
 
 const Link = () => {
   const navigation = useNavigation();
@@ -76,7 +77,7 @@ const TabNavigator = () => (
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navigationTheme}>
       <AuthNavigator />
     </NavigationContainer>
   );
