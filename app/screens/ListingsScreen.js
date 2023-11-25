@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, View } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
 import routes from "../navigation/routes";
@@ -20,6 +20,7 @@ function ListingsScreen({ navigation }) {
 
   return (
     <Screen style={styles.screen}>
+      {}
       {getListingsApi.error && (
         <>
           <AppText>Couldn't retrieve the listings.</AppText>
