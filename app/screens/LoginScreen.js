@@ -12,6 +12,7 @@ import {
 } from "../components/forms";
 import authApi from "../api/auth";
 import AuthContext from "../auth/context";
+import storage from "../auth/storage";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -32,6 +33,7 @@ function LoginScreen(props) {
 
     const user = jwtDecode(result.data);
     authContext.setUser(user);
+    storage.storeToken(result.data);
   };
 
   return (
