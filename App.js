@@ -3,8 +3,6 @@ import { Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import jwtDecode from "jwt-decode";
 import * as SplashScreen from "expo-splash-screen";
 
 import { Button } from "react-native";
@@ -85,26 +83,16 @@ export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
-  const restoreToken = async () => {
-    const token = await storage.getToken();
-    if (!token) return;
-    setUser(jwtDecode(token));
+  const restoreUser = async () => {
+    const user = await storage.getUser();
+    if (user) setUser(user);
   };
-
-  // if (!isReady)
-  //   return (
-  //     <AppLoading
-  //       startAsync={restoreToken}
-  //       onFinish={() => setIsReady(true)}
-  //       onError={console.warn}
-  //     />
-  //   );
 
   useEffect(() => {
     async function prepare() {
       try {
         await SplashScreen.preventAutoHideAsync();
-        await restoreToken();
+        await restoreUser();
       } catch (error) {
         console.log("Error loading app", error);
       } finally {
