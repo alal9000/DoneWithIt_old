@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import jwtDecode from "jwt-decode";
+import * as SplashScreen from "expo-splash-screen";
 
 import { Button } from "react-native";
 import Screen from "./app/components/Screen";
@@ -82,6 +83,7 @@ const TabNavigator = () => (
 
 export default function App() {
   const [user, setUser] = useState();
+  const [isReady, setIsReady] = useState(false);
 
   const restoreToken = async () => {
     const token = await storage.getToken();
@@ -89,14 +91,43 @@ export default function App() {
     setUser(jwtDecode(token));
   };
 
+  // if (!isReady)
+  //   return (
+  //     <AppLoading
+  //       startAsync={restoreToken}
+  //       onFinish={() => setIsReady(true)}
+  //       onError={console.warn}
+  //     />
+  //   );
+
   useEffect(() => {
-    restoreToken();
+    async function prepare() {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+        await restoreToken();
+      } catch (error) {
+        console.log("Error loading app", error);
+      } finally {
+        setIsReady(true);
+      }
+    }
+
+    prepare();
   }, []);
+
+  const onNavigationContainerReady = useCallback(async () => {
+    if (isReady) await SplashScreen.hideAsync();
+  }, [isReady]);
+
+  if (!isReady) return null;
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer
+        theme={navigationTheme}
+        onReady={onNavigationContainerReady}
+      >
         {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
     </AuthContext.Provider>
