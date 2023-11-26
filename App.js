@@ -12,7 +12,7 @@ import navigationTheme from "./app/navigation/navigationTheme";
 import AuthNavigator from "./app/navigation/authNavigator";
 import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
-import storage from "./app/auth/storage";
+import authStorage from "./app/auth/storage";
 
 const Link = () => {
   const navigation = useNavigation();
@@ -84,7 +84,7 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
 
   const restoreUser = async () => {
-    const user = await storage.getUser();
+    const user = await authStorage.getUser();
     if (user) setUser(user);
   };
 
