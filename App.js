@@ -14,6 +14,10 @@ import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 
+const greet = (firstName, lastName, age) => {
+  console.log(`hello ${firstName} ${lastName} you mad pooper of ${age} years`);
+};
+
 const Link = () => {
   const navigation = useNavigation();
 
@@ -117,6 +121,7 @@ export default function App() {
         onReady={onNavigationContainerReady}
       >
         {user ? <AppNavigator /> : <AuthNavigator />}
+        {greet("Aaron", "Lal", 38)}
       </NavigationContainer>
     </AuthContext.Provider>
   );
