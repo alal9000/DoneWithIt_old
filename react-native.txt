@@ -1,0 +1,161 @@
+-react native is built on top of react but it targets mobile platforms instead of browsers
+-there is two ways to build react native apps. We can use react native CLI or Expo CLI. Expo is a set of tools and a framework that sits on top of react native and hides a lot of complexity from us - it makes it fast and easy to build RN apps
+-react native is a framework for building native apps for iOS and android using JS..
+-in react native we dont have the html elements like div, p, h1 and so on we have to use the building blocks / components provided by RN
+-the simplest way to debug RN app is using the good old console.log statements - but they can have a negative impact on performance for our apps in produciton, be sure to remove the console.log statements in production
+-for debugging in vscode the launch.json file contains our debugging configurations
+-app.json includes various settings about our app
+-the react native apis give us access to native functions
+-a widget is a small, self contained, reuseable graphical element that provides a specific functionality. ie: a button component in react native
+-The Image component can display both local images that we bundle with our app as well as network images that we download over the internet
+-when we use the require function, the react native packager will include the file in our bundle so it will increase the size of our app. So we should use static images if they really need to be shipped with our app like an icon etc otherwise we should download images from the internet
+-props in react is a way to pass data or functionality / behaviour to our components
+-RN maps UI components to its native equivilent - ie: a button becomes the native button in both iOS and android
+-apis in RN are objects with methods
+-it is the recommended practice to use the Stylesheet api to define styles, it provides us with validation and other optimisations the react team have implemented
+-it is conventional to define the styles below a component instead of defining them in a different file and importing
+-<SafeAreaView> component only works for iOS
+-points are an abstract units for representing pixels, they do not represent the actual pixel value
+-scale factor: each point contains the scale factor amount of pixels, ie: if scale factor is 2 and points is 320 x 480 then each point contains 2 pixels.
+-the numbers we specify for dimensions in our styles are called DIPS or density independant pixels, ie: width: 150, here 150 is a DIP
+-physical pixels (actual pixels) on a device: DIPS x scale factor
+-hooks in RN are functions that bring extra capabilities to function components
+-with flex or flexbox in RN we can easily build complex layouts that work consistently accross different screensizes. It is a bit different to the css version of flex
+-with flex we typically set up a view as a container and then align children inside that container
+-with RN flex, our view items are laid out vertically in a container because that makes more sense on mobile, flex in css lays out items horizontally by default
+-in flex, whatever we set the flexDirection value as, it will be the main (primary) axis. ie: flexDirection: "column", - here the main axis will be y axis but flexDirection: "row" - here the main axis will be the x axis.
+-flex alignment: with justifyContent we align items along the main axis and with alignItems we align items along the secondary axis
+-the default behaviour of wrapping is when items overflow across the main axis, one or more items get shrunk so other items can fit on the screen, we can change this behviour by enabling wrapping
+-when we enable wrapping by setting the property the alignItems property behaves a bit differently - if we have multiple lines the alignItems property determins alignment of items within each line. So the alignItems property, determins the alignment of items along the secondary axis within each line
+-if we want to center all items in the center of the vertical axis we use alignContent: "center" - note that alignContent only works if we have wrapping, if we dont have wrapping it has no effect
+-flexbasis can map (equivilent to) width or height depending on the main axis
+-the flex property is a shorthand for flexGrow and flexShrink
+-relative positioning on an element / component will not effect the layout of other elements around it, but absolute positioning will, just like regular css
+-when a component position is set to absolute, the positioning of that component is relative to its container, ie: top: 20, left: 20, position: "absolute" - will be 20 pixels from the top and left of the container 
+-in RN by default all components have their position set to relative
+-when we export default in react native, we can then use any name we choose in the import file
+-to make a full circle we need to apply a border radius of at least half the size of our element, ie: height: 100, borderRadius: 50
+-margin is the space around a component and padding is the space inside a component
+-a more specific padding like paddingHorizontal: 10, will override the more general padding like padding: 20,
+-in RN we cant set font styles on container elements like we can do in html, ie: fontSize and fontFamily - this is because RN does not have style inheritence
+-in RN we dont have style inheritance
+-if we use generic prop names we can make our components more reuseable, ie: instead of price we can use subTitle so its more general and reuseable and not just tied to monetry values
+-metro is a JS bundler that takes all our JS files and budles them into a single file or set of files to be executed by the JS engine on the target platform. It serves as both a developement server and build tool
+-a JS engine is a program that parses and executes JS code and outputs the results like chrome v8 engine
+-code compilation involves translating code from human readable source code to native machine code, either directly in binary (1s and 0s) or intermediate code like bytecode (portable to different platforms like macOS and windows)
+-a VM (virtual machine) is a program that simulates the behaviour of a phyiscal computer. The JVM (java virtual machine) translates bytecode into binary for the platform it is running on
+-always try to write a bit of code then test it, its much easier than spending 20 mins on a big complex screen and then facing all sorts of errors
+-when we describe something as dynamic in software, it implies that there is a degree of computation or evaluation involved in determining its value or behaviour - its the opposite of static which is often described as a fixed value
+-try to keep your code as lean as possible so remove unused code and imports as you go along
+-using expo constants we no longer need to import the platform and statusbar APIs to create a safearea view component in android
+-a module is a self contained unit of software that encapsulates a set of related functions or features.
+-an API is a set of rules and tools that allows different software applications to communicate with each other - in the context of documentation an API is often a set of functions, classes, objects or protocols that developers can use to interact with a software component, service or library.
+-with TouchableHighlight nothing happens unless we handle the onPress event, TouchableOpacity will work without handling this event
+-the logic for functions should not be implemented inside a component itself but passed from the outside by the consumer of the component, this is so the component can be reusable, ie: when handling the onPress event for a button in one context we may want to display an alert but in another context we may want to take the user to another screen. So what should happen when a user clicks on the button should be decided by the consumer of the component
+-whenever we update the state our components get re-rendered
+-a hook is just a function that allows us to hook into react features in function components. Hooks in react start with the word use as a naming convention. These hooks are only available in function components
+-the filter method comes in handy when removing objects from arrays
+-make sure to call our useState hooks at the begining of our function component or at the top level because we cannot use this as part of other expressions or statements like loops or conditions because react relies on the order of of which hooks are called to manage state and lifecycle
+-approach to building software: always divide your work into a series of baby steps - work on a small piece of functionality, build it test, make sure it works then move on to the next step
+-modern JS shorthand syntax: if the key and the value are the same, then we can use just the key ie: { backgroundColor: backgroundColor } -> { backgroundColor }
+-we use alignItems: "center" and justifyContent: "center" on the container to place in the center of the container its children elements
+-when we call the state hook we should pass a default or initial value ie: useState('') - here we are passing an empty string
+-shorthand for setting a boolean prop, we only need to type the prop name if we are setting the prop to true ie: secureTextEntry and secureTextEntry={true} are equivilent
+-when coding try to focus on a single task if we try to do too many things, you will get distracted and you may not be able to complete any of these tasks properly. ie: we can ignore some code duplication in the short term to complete our task and then go back and refactor our code
+-in programming, a statement is a complete and executable unit of code that performs a specific action.
+-when defining a function, you provide parameters in the function declaration, if and only if you intend to use those parameters withing the body of the function. ie: keyExtractor={(message) => message.id.toString()}
+-alignSelf can be applied to the item itself (not the container) to align the item within the secondary axis (which is horizontal by default, as the primary axis is vertical by default)
+-we dont get intellisense with custom components
+-we have to wrap in between braces named exports when importing ie: import { Formik } from "formik";
+-we have to use parethesis to breakdown a JSX expression into multiple lines
+-the formik library tracks our form state
+-we define logic outside our function components when we don't want that logic to run everytime the component gets re-rendered
+-In the context of a form field or input, 'blurred' refers to the state when the field loses focus meaning the user has interacted with the field and then moved away from it.
+-with react context we can pass an object down our component tree without having to 'prop drill' or pass a prop down multiple levels, so we can consume that object anywhere in our component tree
+-the rest and spread operators have the same syntax in JS ('...') but its behaviour depends on the context for which it is used; rest for collecting values and spread for spreading values.
+-rest operator: used in function parameters to collect the remaining arguments into an array and destructuring to capture the remaining elements of an array or object into a variable.
+-spread operator: used in function arguments to pass the elements of an array or object as individual arguments 
+-even though price is a number, often times inside a form its represented as a string
+-the benefit of having a color pallet that is defined in another file is that we can reuse these colors in different components
+-long text is a reocurring problem in mobile apps so always test your components with long text
+-the default behaviour of views is that it grows enough to fit its content
+-you can apply a background color to containers to help with layout in development
+-we can create our own custom code snippets in the preferences menu in VScode
+-you can think of setting props in the actual component as parameterized or placeholder values, the actual values are passed via the consumer of that component
+-we should take an approach of building our RN apps with 'flexible architecture' that means components can be easily swapped out and there is not a high degree of coupling between components, we can also combine components to make more complex components.
+-An interface defines a contract specifying the properties and methods an object must have
+-the whole purpose of namespaces or packages is to prevent name conflicts
+-we need to request the users permission when accessing sensative information on their device such as their location or images
+-its generally recommnded to use function components in latest react
+-the function we pass to the effect hook gets exec everytime our component gets rendered
+-the effect hook cannot accept a function that returns a promise so we cant pass an async function between parethesis. An async function implicitly returns a promise even though we dont have an explicit return statement. The effect hook can only return a cleaning up function thats gets exec when our component is unmounted. To solve this problem define the async function seperately and then call it in the effecy hook.
+-using native features is easy with expo we just have to install a library, important an object and call a couple of methods
+-enums in programming are data structures that represent a fixed set of named values which are usually constants 
+-a URI is a string of characters that uniquely identify a particular resource. It is the broader term encompassing both URLs (uniform resource locator) and URNs (uniform resource name). Both of these are subsets of URIs.
+-async methods are designed to handle tasks that might involve waiting for results without blocking the execution of the program. Async methods often return a promise
+-overflow is set on the container not the item ie: overflow: "hidden" - this is useful if your container has round corners but your image is overflowing causing those round corners to be lost
+-using the ref hook we can get a reference to an instance of a component and that is how we can call the methods of that component ie: scrollToEnd() method of the ScrollView component
+-if you see a prop starting with 'on' its an event handler,
+-the size of a View component is determined by the size of its content, so it grows just enough to fill its contents. A ScrollView component however by default will grow to fill all of the available space, be aware of the layout behaviour of various components as this can help avoid layout issues down the track
+-we can use fomik context to get access to state of a form field. When can then pass this state as a prop
+-using bracket notation we can dynamically access properties of an object ie: setFieldValue(name, [...values[name], uri]); where name is passed into the component as a prop. Dot notation would not work here as JS would look for a property on the values object called literally 'name' which is not what we want
+-We pass data and behaviour to components in react via props
+-using a custom hook we can encapsulate some state and the logic around that state inside a single reuseable function. All hooks should start with 'use' thats a common convention
+-we should wrap our await calls in a try / catch block in case our promises dont get resolved, if we dont we will end up with an unresolved promise
+-if we are running an expo managed project we need to install 3rd party libraries with expo, because expo makes sure these libraries are compatible with the version of expo we are using
+-for navigation instead of rendering individual screens we render a stack navigator component inside a Navigation Container and inside that component we include the screens we want to include. This component knows how to navigate between different screens
+-if we are in a child component we dont have access to the route prop, there we have to use the route hook ie: useRoute(); this returns the same route object as the prop
+-each tab in a rn app should maintain its own navigation state
+-using the spread operator we can copy the properties of an object into another object and overwrite 1 or more properties ie: ...DefaultTheme
+-try not to hardcode routes into your app because it makes it hard to maintain, just refactor into another file, import that file and reference the object
+-we should not combine logic that calls the server with our components as this violates the seperation of concern principal - they shouldnt know anything about the http protocol. Our components should have a single responsibility and that is the UI. Our react component should talk to a seperate API-Layer
+-as a best practice always write the error handling code first because that is very important
+-as part of building your apps you should always test them to see how they behave with a slow network connection
+-we use the state hook in react when we need to store a piece of data that may change over time and we want to trigger a rerender of our component when that data changes
+-with line breaks we can seperate different stories in our code
+-we can use the rest operator to allow a function to take 0 or more arguments ie: const request = async (...args) => {}
+-in http protocol, each request has a special header called 'content-type' with this header we can tell the server what kind of data we will send in the request
+-RAM is volatile memory that is used for temporary storage during program execution. hard-drives and solid-state-drives store data persistently even when the power is turned off.
+-memory cache is a smaller memory pool close to the CPU to speed up data access for frequently used data 
+-if we have two react components, lets say a parent and a child. Lets say something happens in the child and the parent needs to get notified. We can implement this by the parent sending a function to the child, and the child calls that function when something happens - this is what we call raising an event.
+-If a child component wants to notify a parent component it raises an event - the parent handles the event by passing a function to the child
+-four strategies for building offline capable apps: notify the user, disable features, cache data, store user actions
+-caching: async storeage is like local storage on browsers, we have key/value pairs where the values are unencrypted strings. We can use this caching option locally on the users device but have a limit of 6 MB by default which can be increased but we dont want to store lots of data inside cache on mobile devices because mobiles have limited storeage. We also have SecureStore API for expo and SQLite DB
+-we should use a logging service to log errors that occur in our application ie: sentry
+-to serialize an object or data structure often means to convert it into a string representation
+-when we use the await keyword we should wrap our code inside a try / catch block incase the promise does not get resolved
+-to parse something in programming is to run an object through some process that transforms it in some way
+-some functions in JS return a value and other functions perform a task, thats why not all functions require a return statement
+-CQS principle: command query seperation principle - our functions should either be commands or queries, not both. A command function is a function that changes the state of the system, while a query function returns the state of the system.
+-SR principle: single responsibility principal - our functions should have a single responsibility, any additional responsibilities should be moved to a seperate function or module.
+-the value of a constant cannot be reassigned after it has been defined, but its important to note that if the constant holds an object like an array or object literal, then the properties or elements within that object can be modified. The immutability applies to the binding of the variable (constant name) and not to the content of the object it points to.
+-if we want to support progressive image loading, our server should be able to generate thumbnails
+-we should only use redux if we have a complex data flow in our app. If we have multiple screens sharing the same piece of data, that can get changed in different ways and all these screens and components should be insync, only then should we go for redux
+-firebase is a platform for building mobile apps - we get a realtime DB, offline support and automatic synchronization. It essentially becomes the backend of your app
+-the not operator in JS can be used in two different ways depending on the context. 1. If the operand is a boolean value then then the not operator will invert the boolean value. Ie:  let myBool = true; let invertedBool = !myBool; // invertedBool is now false 2. If the operand is not a boolean then the not operator will perform a truthy / falsy check, convert the operand to a boolean and then invert the result ie: let myValue = ""; let invertedValue = !myValue; // invertedValue is now true
+-react context is suitable for sharing small objects that dont change often - anything more complex we need a state management library like zustand or redux. The probelm with react context is that any updates to the state trigger a re-render in the entire component tree, so is unsuitable for complex apps with lots of components and state that regualry changes
+-for sharing large objects that change frequently we should use redux or zustand.
+-in the context of networking a protocol means 'a set of rules' that defines how data is transmitted and received between devices on a network.
+-a splash screen is a GUI element that appears when an app is launching. It is usually showed for a short duration, providing users with a visual indication that the aoo is in the process of starting up. They usually show the logo, branding or other intro visual content
+-our App component should be like a manager that delegates work to others, it should not know too much about a single responsibility ie: authentication or making api calls
+-we can call protected API endpoints ie: http://localhost:5000/api/my/listings by passing the jwt token in the request header
+-when we use the await keyword, execution of the async function it is wrapped in will pause execution until the awaited promise is resolved or rejected
+-SDK stands for software development kit. It is a set of tools, libraries and documentation that developers use to create software applications for specific platforms (ie: android or iOS), frameworks or programming languages.
+-In the context of APIs and software, interfaces refers to a predefined set of functions, methods and objects
+-In the context of APs and software, the term 'contract' refers to an agreement or set of rules that developers must follow when interacting with the API. ie: method signatures, input / output (io) formats, error handling, protocol and communications standards and versioning. This allows for stability and consistency of the API  
+-null coalescing operator: ?. - the logic on the right of the operator will only be called only if the object it is being used on is not null
+-our UI components should only be only responsible for presentation logic
+-the javascript virtual machine is a software emulation of a physical computer that executes JS code, It provides an environment in which JS programs can run, allowing them to be executed inpdependantly of the host machines architechure. - The purpose of the JS VM is to interpret or compile JS code and execute it on a computer or device
+-always check to see if there are more lightweight alternatives for our 3rd party libraries. This is because all our JS files get combined and minified into a bundle which is a single file or set of files. When we start our app this bundle needs to be loaded into memory and parsed by the javaScript virtual machine (JS VM) on the target device, the more code we have in this bundle the longer it will take to load and parse our code
+-how you import something from a library can also make a difference in your bundle size. ie: some libraries like lodash are split into smaller packages. ie: import uniqueId from "lodash/uniqueId"; - this import cost only 2.3kb where as this import statement: import { uniqueId } from "lodash"; costs 71.1kb
+-sentry and bugsnag x2 popular error reporting (logging) tools
+-in almost every app we need to properly manage the settings for different environments like development, staging and production
+
+
+need to go back and review destructing args in the prop and getting the item object and the onSelectItem event in AppPicker
+
+
+
+depreciations:
+
+gestureHandlerRootview - handling swipes
