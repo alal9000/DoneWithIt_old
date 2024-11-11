@@ -26,7 +26,7 @@ function ListingsScreen({ navigation }) {
         {getListingsApi.error && (
           <>
             <AppText>Couldn't retrieve the listings.</AppText>
-            <Button title="Retry" onPress={loadListings} size="" />
+            <Button title="Retry" onPress={() => console.log("test")} size="" />
           </>
         )}
         <FlatList
